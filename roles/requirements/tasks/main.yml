@@ -1,0 +1,45 @@
+---
+- name: Update apt repo and cache
+  apt: 
+    update_cache: yes
+    force_apt_get: yes
+    cache_valid_time: 3600
+
+- name: Upgrade all packages
+  apt: 
+    upgrade: dist 
+    force_apt_get: yes
+
+- name: Install GIT
+  apt:
+    name: git
+    state: latest
+
+- name: Install UFW
+  apt:
+    name: ufw
+    state: latest
+
+- name: Install WGet
+  apt:
+    name: wget
+    state: latest
+
+- name: Create fivem user
+  user:
+    name: fivem
+    password: "{{ unixpassword|password_hash('sha512') }}"
+    update_password: on_create
+
+- name: Add SFTP config to the SSH file
+  blockinfile:
+    path: /etc/ssh/sshd_config
+    block: |
+      Match User fivem
+      ChrootDirectory /home/%u
+      ForceCommand internal-sftp 
+
+- name: Restart SSH service
+  service:
+    name: ssh
+    state: restarted
