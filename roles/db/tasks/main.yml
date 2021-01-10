@@ -1,8 +1,19 @@
 ---
+- name: Add MariaDB repository key
+  apt_key:
+    url: https://mariadb.org/mariadb_release_signing_key.asc 
+    state: present
+
+- name: Add MariaDB repository
+  apt_repository:
+    repo: "deb [arch=amd64,arm64,ppc64el] https://mirrors.up.pt/pub/mariadb/repo/10.5/ubuntu focal main"
+    state: present
+
 - name: Install MariaDB
   apt:
     name: mariadb-server
     state: latest
+    update_cache: yes
 
 - name: Start MariaDB
   service:
