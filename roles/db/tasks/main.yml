@@ -21,6 +21,14 @@
     state: started
     enabled: yes
 
+- name: Permit remote connections
+  lineinfile:
+    path: /etc/mysql/mariadb.conf.d/50-server.cnf
+    regexp: '127.0.0.1'
+    line: 'bind-address            = 0.0.0.0'
+  notify:
+    - restart mariadb
+
 - name: Add MariaDB Rule
   community.general.ufw:
     rule: allow
