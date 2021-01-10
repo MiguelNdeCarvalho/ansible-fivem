@@ -3,3 +3,34 @@
   apt:
     name: mariadb-server
     state: latest
+
+- name: Start MariaDB
+  service:
+    name: mariadb
+    state: started
+    enabled: yes
+
+- name: Add MariaDB Rule
+  community.general.ufw:
+    rule: allow
+    port: 3306
+    proto: tcp
+
+- name: Create DB
+  community.mysql.mysql_db:
+    name: "{{ dbname }}"
+    state: present
+
+- name: Removes all anonymous user accounts
+  community.mysql.mysql_user:
+    name: ''
+    host_all: yes
+    state: absent
+
+- name: Create User
+  community.mysql.mysql_user:
+    state: present
+    name: "{{ dbuser }}"
+    password: "{{ dbpassword }}"
+    host: "%"
+    priv: "{{ dbname }}.*:ALL"
