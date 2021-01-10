@@ -20,12 +20,14 @@
   community.mysql.mysql_db:
     name: "{{ dbname }}"
     state: present
+    login_unix_socket: /run/mysqld/mysqld.sock
 
 - name: Removes all anonymous user accounts
   community.mysql.mysql_user:
     name: ''
     host_all: yes
     state: absent
+    login_unix_socket: /run/mysqld/mysqld.sock
 
 - name: Create User
   community.mysql.mysql_user:
@@ -34,3 +36,4 @@
     password: "{{ dbpassword }}"
     host: "%"
     priv: "{{ dbname }}.*:ALL"
+    login_unix_socket: /run/mysqld/mysqld.sock
