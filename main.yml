@@ -1,6 +1,8 @@
 ---
-- name : Apply  
+- name : Setup Ubuntu/Debian VPS for FiveM
   hosts: all
   remote_user: root
   roles: 
-    - echo
+    - requirements
+    - db
+    - fivem
