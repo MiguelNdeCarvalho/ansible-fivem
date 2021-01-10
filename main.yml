@@ -1,0 +1,6 @@
+---
+- name : Apply  
+  hosts: all
+  remote_user: root
+  roles: 
+    - echo
