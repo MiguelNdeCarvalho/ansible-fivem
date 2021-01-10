@@ -15,6 +15,26 @@
     name: ['git', 'ufw', 'wget', 'python3-pymysql']
     state: latest
 
+- name: Start UFW
+  community.general.ufw:
+    state: enabled
+
+- name: Deny Incoming by Default
+  community.general.ufw:
+    default: deny
+    direction: incoming
+
+- name: Allow Outgoing by Default
+  community.general.ufw:
+    default: allow
+    direction: outgoing
+
+- name: Permit SSH with rate limit
+  community.general.ufw:
+    rule: limit
+    port: ssh
+    proto: tcp
+
 - name: Create fivem user
   user:
     name: fivem
