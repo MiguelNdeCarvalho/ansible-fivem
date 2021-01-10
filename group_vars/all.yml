@@ -1,0 +1,11 @@
+---
+
+# User Variables
+unixpassword: pass123
+
+# Database Variables
+dbname: fivem
+dbuser: fivem
+dbpassword: pass123
+
+# FiveM Variables
