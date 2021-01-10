@@ -25,6 +25,15 @@
     name: wget
     state: latest
 
+- name: Install PIP3
+  apt:
+    name: python3-pip
+    state: latest
+
+- name: Install
+  pip:
+    name: PyMySQL
+
 - name: Create fivem user
   user:
     name: fivem
