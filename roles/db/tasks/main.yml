@@ -13,7 +13,7 @@
 - name: Add MariaDB Rule
   community.general.ufw:
     rule: allow
-    port: 3306
+    port: '3306'
     proto: tcp
 
 - name: Create DB
