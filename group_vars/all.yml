@@ -4,6 +4,7 @@
 unixpassword: pass123
 
 # Database Variables
+db_setup: true #By default it will install MariaDB and setup it
 dbname: fivem
 dbuser: fivem
 dbpassword: pass123
