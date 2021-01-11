@@ -4,5 +4,5 @@
   remote_user: root
   roles: 
     - requirements
-    - db
+    - { role: db, when: db_setup}
     - fivem
