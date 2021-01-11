@@ -34,3 +34,24 @@
     owner: fivem
     group: fivem
     follow: no
+
+- name: Reload systemctl configs
+  systemd:
+    daemon_reload: yes
+
+- name: Enable and start FiveM service
+  service:
+    name: fivem
+    enabled: yes
+    state: started
+
+- name: Allow connection to txAdmin
+  community.general.ufw:
+    rule: allow
+    port: "{{ txadmin_port | string }}"
+    proto: tcp
+
+- name: Allow connection to FiveM Server
+  community.general.ufw:
+    rule: allow
+    port: "{{ server_port | string }}"
