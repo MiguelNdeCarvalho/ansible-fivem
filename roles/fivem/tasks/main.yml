@@ -33,3 +33,4 @@
     recurse: yes
     owner: fivem
     group: fivem
+    follow: no
