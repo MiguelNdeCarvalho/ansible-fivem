@@ -9,3 +9,9 @@ dbuser: fivem
 dbpassword: pass123
 
 # FiveM Variables
+server_port: 30120
+txadmin_port: 40120
+server_locale: root-AQ # please DO replace root-AQ on the line ABOVE with a real language!
+server_name: "Testing Server"
+server_steamKey: 123456
+server_licenseKey: 123456
