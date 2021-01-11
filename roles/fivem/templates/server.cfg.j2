@@ -1,6 +1,6 @@
 # Only change the IP if you're using a server with multiple network interfaces, otherwise change the port only.
-endpoint_add_tcp "0.0.0.0:30120"
-endpoint_add_udp "0.0.0.0:30120"
+endpoint_add_tcp "0.0.0.0:{{ server_port }}"
+endpoint_add_udp "0.0.0.0:{{ server_port }}"
 
 # These resources will start by default.
 ensure mapmanager
@@ -27,7 +27,7 @@ sets tags "default"
 
 # A valid locale identifier for your server's primary language.
 # For example "en-US", "fr-CA", "nl-NL", "de-DE", "en-GB", "pt-BR"
-sets locale "root-AQ" 
+sets locale "{{ server_locale }}" 
 # please DO replace root-AQ on the line ABOVE with a real language! :)
 
 # Set an optional server info and connecting banner image url.
@@ -36,7 +36,7 @@ sets locale "root-AQ"
 #sets banner_connecting "https://url.to/image.png"
 
 # Set your server's hostname
-sv_hostname "FXServer, but unconfigured"
+sv_hostname "{{ server_name }}"
 
 # Nested configs!
 #exec server_internal.cfg
@@ -45,7 +45,7 @@ sv_hostname "FXServer, but unconfigured"
 #load_server_icon myLogo.png
 
 # convars which can be used in scripts
-set temp_convar "hey world!"
+#set temp_convar "hey world!"
 
 # Remove the `#` from the below line if you do not want your server to be listed in the server browser.
 # Do not edit it if you *do* want your server listed.
@@ -64,7 +64,7 @@ sv_maxclients 48
 
 # Steam Web API key, if you want to use Steam authentication (https://steamcommunity.com/dev/apikey)
 # -> replace "" with the key
-set steam_webApiKey ""
+set steam_webApiKey "{{ server_steamKey }}"
 
 # License key for your server (https://keymaster.fivem.net)
-sv_licenseKey changeme
+sv_licenseKey {{ server_licenseKey }}
