@@ -12,7 +12,7 @@
 
 - name: Install needed packages
   apt:
-    name: ['git', 'ufw', 'software-properties-common', 'python3-pymysql']
+    name: ['git', 'ufw', 'software-properties-common', 'python-pymysql', 'python3-pymysql']
     state: latest
 
 - name: Start UFW
