@@ -47,6 +47,7 @@
     block: |
       Match User fivem
       ChrootDirectory /home/%u
+      PasswordAuthentication Yes
       ForceCommand internal-sftp 
 
 - name: Restart SSH service
