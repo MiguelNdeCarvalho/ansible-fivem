@@ -2,24 +2,24 @@
 
 - name: Create artifacts folder
   file:
-    path: /home/fivem/artifacts/
+    path: "{{ install_directory }}/artifacts/"
     state: directory
 
 - name: Extract artifacts
   unarchive:
     src: https://runtime.fivem.net/artifacts/fivem/build_proot_linux/master/3383-913a4441508dcb562337a67c0c727ea11f6cbe39/fx.tar.xz
-    dest: /home/fivem/artifacts/
+    dest: "{{ install_directory }}/artifacts/"
     remote_src: yes
 
 - name: Download resources folder
   git:
     repo: 'https://github.com/citizenfx/cfx-server-data.git'
-    dest: /home/fivem/data/
+    dest: "{{ install_directory }}/data/"
 
 - name: Create FiveM config file
   template:
     src: server.cfg.j2
-    dest: /home/fivem/data/server.cfg
+    dest: "{{ install_directory }}/data/server.cfg"
 
 - name: Create FiveM service
   template:
@@ -28,11 +28,19 @@
 
 - name: Fix permissions on the server
   file:
-    path: /home/fivem/
+    path: "{{ install_directory }}"
     state: directory
     recurse: yes
     owner: fivem
     group: fivem
+    follow: no
+
+- name: Make folder owned by root
+  file:
+    path: "{{ install_directory }}"
+    state: directory
+    owner: root
+    group: root
     follow: no
 
 - name: Reload systemctl configs

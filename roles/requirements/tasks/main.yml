@@ -46,7 +46,7 @@
     path: /etc/ssh/sshd_config
     block: |
       Match User fivem
-      ChrootDirectory /home/%u
+      ChrootDirectory {{ install_directory }}
       PasswordAuthentication Yes
       ForceCommand internal-sftp 
 

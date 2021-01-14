@@ -6,7 +6,7 @@ After=network.target
 User=fivem
 Group=fivem
 
-ExecStart=/bin/bash /home/fivem/artifacts/run.sh +set txAdminPort {{ txadmin_port }}
+ExecStart=/bin/bash {{ install_directory }}/artifacts/run.sh +set txAdminPort {{ txadmin_port }}
 
 Type=simple
 TimeoutStopSec=20

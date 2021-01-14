@@ -10,6 +10,7 @@ dbuser: fivem
 dbpassword: pass123
 
 # FiveM Variables
+install_directory: /opt/fivem # server will be installed in that directory
 server_port: 30120
 txadmin_port: 40120
 server_locale: root-AQ # please DO replace root-AQ on the line ABOVE with a real language!
