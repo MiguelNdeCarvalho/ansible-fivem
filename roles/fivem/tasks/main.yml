@@ -7,7 +7,7 @@
 
 - name: Extract artifacts
   unarchive:
-    src: https://runtime.fivem.net/artifacts/fivem/build_proot_linux/master/3383-913a4441508dcb562337a67c0c727ea11f6cbe39/fx.tar.xz
+    src: "https://runtime.fivem.net/artifacts/fivem/build_proot_linux/master/{{ server_version }}/fx.tar.xz"
     dest: "{{ install_directory }}/artifacts/"
     remote_src: yes
 
