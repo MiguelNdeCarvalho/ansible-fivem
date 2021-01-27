@@ -1,4 +1,5 @@
 ---
+
 - name: Update apt repo and cache
   apt: 
     update_cache: yes
@@ -12,8 +13,21 @@
 
 - name: Install needed packages
   apt:
-    name: ['git', 'ufw', 'software-properties-common', 'python-pymysql', 'python3-pymysql']
+    name: ['git', 'ufw', 'software-properties-common']
     state: latest
+
+- name: Install PyMySQL for Python3
+  apt:
+    name: python3-pymysql
+    state: latest
+  register: python3
+  when: ansible_python_version is version('3', '>=')
+
+- name: Install PyMySQL for Python2
+  apt:
+    name: python-pymysql
+    state: latest
+  when: python3 is skipped
 
 - name: Start UFW
   community.general.ufw:
