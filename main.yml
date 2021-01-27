@@ -2,6 +2,8 @@
 - name : Setup Ubuntu/Debian VPS for FiveM
   hosts: all
   remote_user: root
+  vars:
+    ansible_python_interpreter: auto
   roles: 
     - requirements
     - { role: db, when: db_setup}
